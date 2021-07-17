@@ -102,6 +102,6 @@ chmod-socket    = 666
 <br/>
 
 # 실행
-    uwsgi --ini mydevops_uwsgi.ini
+    uwsgi --ini /etc/uwsgi/sites/mydevops_uwsgi.ini
 
 
