@@ -53,7 +53,8 @@ nginx를 설치하였다면 /etc/nginx/sites-available 디렉토리가 있을 �
 # mydevops.conf
 # the upstream component nginx needs to connect to
 upstream django {
-    server 3.36.94.248:8000;
+    #server 3.36.94.248:8000;
+    server unix:///home/ubuntu/mydevops/mydevops.sock;
 }
 
 # configuration of the server
