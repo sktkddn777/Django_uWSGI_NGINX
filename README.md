@@ -54,13 +54,13 @@ nginx를 설치하였다면 /etc/nginx/sites-available 디렉토리가 있을 �
 # the upstream component nginx needs to connect to
 upstream django {
     #server 3.36.94.248:8000;
-    server unix:///home/ubuntu/mydevops/mydevops.sock;
+    server unix:///tmp/mydevops.sock;
 }
 
 # configuration of the server
 server {
     listen      80;
-    server_name aws IP;
+    server_name 3.36.94.248;
     charset     utf-8;
 
     # max upload size
@@ -68,16 +68,16 @@ server {
 
     # Django media and static files
     location /media  {
-        alias /home/ubuntu/mydevops/media;
+        alias /tmp/media;
     }
     location /static {
-        alias /home/ubuntu/mydevops/static;
+        alias /tmp/static;
     }
 
     # Send all non-media requests to the Django server.
     location / {
         uwsgi_pass  django;
-        include     /home/ubuntu/mydevops/uwsgi_params;
+        include     /etc/nginx/uwsgi_params;
     }
 }
 ```
