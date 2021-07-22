@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-d8%6_uk3n*9ou2o0#^n9y1)%6!t6ylmrzvvk=u=1$p-gh(52t$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.36.94.248']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,8 +76,17 @@ WSGI_APPLICATION = 'mydevops.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': True,
+        'NAME': 'django_mongodb_docker',
+        'HOST': 'mongodb',
+        'PORT': 27017,
+        'USER': 'root',
+        'PASSWORD': 'mongoadmin',
+        'AUTH_SOURCE': 'admin',
+        'AUTH_MECHANISM': 'SCRAM-SHA-1',
     }
 }
 

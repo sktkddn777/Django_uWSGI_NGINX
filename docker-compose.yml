@@ -1,0 +1,24 @@
+version: "3.9"
+volumes:
+    mongodb-data:
+        name: mongodb-data
+networks:
+  mongodb_network:
+    name: mongodb_network
+
+    services:
+        mongodb:
+          container_name: mongodb
+          image: 2d38962b1e5e
+          restart: unless-stopped
+          volumes:
+            - mongodb-data:/data/db
+          environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: example
+          networks:
+            - mongodb_network
+          ports:
+            - 27017:27017
+        
+        
